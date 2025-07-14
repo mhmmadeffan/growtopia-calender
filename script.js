@@ -6,12 +6,14 @@ var img = document.getElementById("calendarImage");
 var modalImg = document.getElementById("img01");
 var captionText = document.getElementById("caption");
 var overlay = document.getElementById("overlay"); // Dapatkan elemen overlay
+var body = document.body; // Dapatkan elemen body
 
 img.onclick = function(){
-  modal.style.display = "block";
+  modal.style.display = "flex"; // Gunakan flex agar posisi tengah bekerja
   modalImg.src = this.src;
   captionText.innerHTML = this.alt;
   overlay.classList.add("active"); // Aktifkan overlay
+  body.classList.add("modal-active"); // Tambahkan kelas untuk memblur container
 }
 
 // Dapatkan elemen <span> yang menutup modal
@@ -21,6 +23,7 @@ var span = document.getElementsByClassName("close")[0];
 function close_modal() {
   modal.style.display = "none";
   overlay.classList.remove("active"); // Nonaktifkan overlay
+  body.classList.remove("modal-active"); // Hapus kelas untuk menghilangkan blur
 }
 
 // Ketika pengguna mengklik <span> (x), tutup modal
