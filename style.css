@@ -1,17 +1,27 @@
-body {
-    font-family: Arial, sans-serif;
+html, body {
     margin: 0;
     padding: 0;
+    height: 100%; /* Pastikan body dan html memenuhi tinggi viewport */
+    width: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     background-image: url('https://www.growtopiagame.com/forums/filedata/fetch?id=6502697&d=1381570915'); /* Ganti dengan gambar latar belakang Growtopia Anda */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    overflow: auto; /* Default: auto, biarkan scroll jika konten melebihi */
+    box-sizing: border-box;
+}
+
+/* Ketika modal aktif, sembunyikan overflow dan blur container */
+body.modal-active {
     overflow: hidden; /* Mencegah scrolling saat modal aktif */
 }
 
@@ -23,8 +33,7 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7); /* Latar belakang gelap */
-    /* backdrop-filter: blur(5px); */ /* Hapus backdrop-filter dari sini */
-    z-index: 9; /* Di bawah modal tapi di atas konten utama */
+    z-index: 9;
     display: none; /* Sembunyikan secara default */
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
@@ -45,11 +54,10 @@ body {
     max-width: 90%;
     z-index: 1;
     position: relative;
-    /* Tambahkan transisi filter di sini */
     transition: filter 0.3s ease-in-out;
 }
 
-/* Ketika overlay aktif, blur container */
+/* Ketika body memiliki kelas modal-active, blur container */
 body.modal-active .container {
     filter: blur(5px);
 }
@@ -82,35 +90,34 @@ h1 {
 
 /* The Modal (Background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 10; /* Sit on top */
+    display: none; /* TETAP none secara default agar tidak terlihat */
+    position: fixed;
+    z-index: 10;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    box-sizing: border-box; /* Include padding in width/height */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
 
     /* Flexbox untuk memposisikan konten di tengah */
-    display: flex;
     justify-content: center; /* Horizontally center */
     align-items: center; /* Vertically center */
-    padding: 20px; /* Sedikit padding agar gambar tidak terlalu mepet ke tepi */
+    padding: 20px;
 }
 
 /* Modal Content (Image) */
 .modal-content {
     display: block;
-    max-width: 90%; /* Menggunakan max-width agar responsif */
-    max-height: 90vh; /* Menggunakan max-height agar tidak melebihi tinggi viewport */
-    height: auto; /* Menjaga rasio aspek */
-    width: auto; /* Menjaga rasio aspek */
+    max-width: 90%;
+    max-height: 90vh;
+    height: auto;
+    width: auto;
     animation-name: zoom;
     animation-duration: 0.6s;
     border: 5px solid #ffd700;
     border-radius: 8px;
-    filter: none; /* Pastikan gambar di modal tidak buram */
+    filter: none;
 }
 
 /* Add Animation */
@@ -121,6 +128,7 @@ h1 {
 
 /* The Close Button */
 .close {
+    /* Posisi relatif terhadap modal itu sendiri */
     position: absolute;
     top: 15px;
     right: 35px;
@@ -129,7 +137,7 @@ h1 {
     font-weight: bold;
     transition: 0.3s;
     cursor: pointer;
-    z-index: 11; /* Pastikan tombol tutup di atas gambar modal */
+    z-index: 11;
 }
 
 .close:hover,
@@ -139,6 +147,14 @@ h1 {
     cursor: pointer;
 }
 
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        max-width: 95%;
+        max-height: 95vh;
+    }
+}
+
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .container {
@@ -146,9 +162,5 @@ h1 {
     }
     h1 {
         font-size: 1.5em;
-    }
-    .modal-content {
-        max-width: 95%; /* Lebih banyak ruang di layar kecil */
-        max-height: 95vh;
     }
 }
