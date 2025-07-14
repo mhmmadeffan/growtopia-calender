@@ -12,19 +12,18 @@ body {
     background-attachment: fixed;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    /* Hapus transisi filter dari body, kita akan menerapkannya pada overlay */
+    overflow: hidden; /* Mencegah scrolling saat modal aktif */
 }
 
-/* Ini adalah overlay yang akan memudar dan blur konten di belakang modal */
+/* Overlay yang akan memudar dan blur konten di belakang modal */
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for blur effect */
-    backdrop-filter: blur(5px); /* Efek blur yang sebenarnya */
-    -webkit-backdrop-filter: blur(5px); /* Untuk kompatibilitas Safari */
+    background-color: rgba(0, 0, 0, 0.7); /* Latar belakang gelap */
+    /* backdrop-filter: blur(5px); */ /* Hapus backdrop-filter dari sini */
     z-index: 9; /* Di bawah modal tapi di atas konten utama */
     display: none; /* Sembunyikan secara default */
     opacity: 0;
@@ -36,7 +35,7 @@ body {
     opacity: 1;
 }
 
-/* Konten utama yang akan diblur oleh overlay */
+/* Konten utama yang akan diblur */
 .container {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 30px;
@@ -44,8 +43,15 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     text-align: center;
     max-width: 90%;
-    z-index: 1; /* Pastikan container di atas background asli tapi di bawah overlay dan modal */
-    position: relative; /* Penting untuk z-index */
+    z-index: 1;
+    position: relative;
+    /* Tambahkan transisi filter di sini */
+    transition: filter 0.3s ease-in-out;
+}
+
+/* Ketika overlay aktif, blur container */
+body.modal-active .container {
+    filter: blur(5px);
 }
 
 h1 {
@@ -74,33 +80,37 @@ h1 {
     color: #ccc;
 }
 
-/* The Modal (Background) - Pastikan ini memiliki z-index yang lebih tinggi dari overlay */
+/* The Modal (Background) */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 10; /* Lebih tinggi dari overlay (z-index: 9) */
-    padding-top: 50px;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    /* Hapus background-color dari modal karena overlay akan menanganinya */
-    box-sizing: border-box;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    box-sizing: border-box; /* Include padding in width/height */
+
+    /* Flexbox untuk memposisikan konten di tengah */
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    padding: 20px; /* Sedikit padding agar gambar tidak terlalu mepet ke tepi */
 }
 
 /* Modal Content (Image) */
 .modal-content {
-    margin: auto;
     display: block;
-    width: 80%;
-    max-width: 700px;
+    max-width: 90%; /* Menggunakan max-width agar responsif */
+    max-height: 90vh; /* Menggunakan max-height agar tidak melebihi tinggi viewport */
+    height: auto; /* Menjaga rasio aspek */
+    width: auto; /* Menjaga rasio aspek */
     animation-name: zoom;
     animation-duration: 0.6s;
     border: 5px solid #ffd700;
     border-radius: 8px;
-    /* Pastikan gambar di modal tidak buram */
-    filter: none;
+    filter: none; /* Pastikan gambar di modal tidak buram */
 }
 
 /* Add Animation */
@@ -119,6 +129,7 @@ h1 {
     font-weight: bold;
     transition: 0.3s;
     cursor: pointer;
+    z-index: 11; /* Pastikan tombol tutup di atas gambar modal */
 }
 
 .close:hover,
@@ -128,13 +139,6 @@ h1 {
     cursor: pointer;
 }
 
-/* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
-    .modal-content {
-        width: 100%;
-    }
-}
-
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .container {
@@ -142,5 +146,9 @@ h1 {
     }
     h1 {
         font-size: 1.5em;
+    }
+    .modal-content {
+        max-width: 95%; /* Lebih banyak ruang di layar kecil */
+        max-height: 95vh;
     }
 }
