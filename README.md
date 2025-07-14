@@ -1,2 +1,2 @@
-# growtopia-calender
-growtopia-calender
+# growtopia calender
+growtopia calender, Growtopia calendar
