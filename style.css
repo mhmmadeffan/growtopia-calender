@@ -18,7 +18,7 @@ body {
     background-attachment: scroll; /* Pastikan latar belakang berfungsi lebih konsisten di mobile */
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    overflow-y: auto; /* Izinkan gulir vertikal jika memang diperlukan, untuk menghindari kerapian */
+    overflow-y: hidden; /* PERUBAHAN PENTING: Mencegah gulir vertikal */
     overflow-x: hidden; /* Mencegah gulir horizontal */
     box-sizing: border-box;
 }
@@ -179,19 +179,20 @@ h1 {
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .container {
-        padding: 15px; /* Sedikit lebih longgar dari sebelumnya, agar tidak terlalu sempit */
+        padding: 20px; /* PERUBAHAN: Padding yang lebih seimbang untuk kerapian */
     }
     h1 {
-        font-size: 1.3em; /* Ukuran font H1 tetap proporsional */
-        margin-bottom: 10px; /* Margin bawah H1 yang cukup */
+        font-size: 1.4em; /* PERUBAHAN: Ukuran font H1 yang lebih optimal */
+        margin-bottom: 15px; /* PERUBAHAN: Margin bawah H1 yang lebih seimbang */
     }
     .calendar-image {
-        max-height: none; /* DIHAPUS: Batasan max-height agar gambar bisa menyesuaikan secara alami */
-        object-fit: initial; /* DIHAPUS: object-fit agar tidak memaksa scaling */
+        /* PERUBAHAN: Menghapus max-height agar gambar dapat menyesuaikan secara alami */
+        max-height: none;
+        object-fit: initial;
     }
     .disclaimer {
-        margin-top: 10px; /* Margin atas disclaimer yang cukup */
-        font-size: 0.8em; /* Ukuran font disclaimer tetap proporsional */
+        margin-top: 15px; /* PERUBAHAN: Margin atas disclaimer yang lebih seimbang */
+        font-size: 0.85em; /* PERUBAHAN: Ukuran font disclaimer yang lebih optimal */
     }
 }
 
