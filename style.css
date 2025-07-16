@@ -1,7 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: 100%; /* Pastikan html dan body mengambil tinggi penuh */
     width: 100%;
 }
 
@@ -10,15 +10,16 @@ body {
     display: flex;
     flex-direction: column; /* Mengubah arah flex menjadi kolom */
     min-height: 100vh; /* Pastikan body setidaknya setinggi viewport */
-    justify-content: flex-start; /* UBAH INI: Biarkan margin: auto pada .container yang mengatur pemusatan vertikal */
+    justify-content: flex-start; /* Biarkan margin: auto pada .container yang mengatur pemusatan vertikal */
     align-items: center; /* Ini memusatkan konten secara horizontal */
     background-image: url('img/growtopia_world_background.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll; /* UBAH INI: Agar latar belakang berfungsi lebih konsisten di mobile */
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    overflow: auto;
+    overflow-y: auto; /* Izinkan scroll vertikal jika konten melebihi tinggi viewport */
+    overflow-x: hidden; /* Tambahkan/pastikan ini untuk mencegah scroll horizontal yang tidak diinginkan */
     box-sizing: border-box;
 }
 
@@ -57,14 +58,15 @@ body.modal-active {
     z-index: 1;
     position: relative;
     transition: filter 0.3s ease-in-out;
-    /* margin-bottom: 20px; Ini tidak diperlukan lagi karena margin: auto */
-    margin: auto; /* PERUBAHAN UTAMA: Ini akan memusatkan .container secara vertikal & horizontal */
+    margin: auto; /* Ini akan memusatkan .container secara vertikal & horizontal */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    /* padding-top: 20px; padding-bottom: 20px; // Anda bisa sesuaikan padding internal jika diperlukan */
+    /* Anda bisa sesuaikan padding internal jika diperlukan, contoh: */
+    /* padding-top: 20px; */
+    /* padding-bottom: 20px; */
 }
 
 /* Ketika body memiliki kelas modal-active, blur container */
