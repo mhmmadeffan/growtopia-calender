@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-direction: column; /* Mengubah arah flex menjadi kolom */
     min-height: 100vh; /* Pastikan body setidaknya setinggi viewport */
-    justify-content: flex-start; /* UBAH INI: Pastikan konten dimulai dari atas, bukan menyebar */
+    justify-content: center; /* UBAH INI: Pusatkan konten secara vertikal */
     align-items: center;
     background-image: url('img/growtopia_world_background.png'); /* Ganti dengan gambar latar belakang Growtopia Anda */
     background-size: cover;
@@ -58,12 +58,12 @@ body.modal-active {
     position: relative;
     transition: filter 0.3s ease-in-out;
     margin-bottom: 20px; /* Jarak dari footer */
-    /* HAPUS/KOMENTARI flex-grow: 1; */ /* INI PENTING: Mencegah container mengambil semua sisa ruang */
+    /* Pastikan flex-grow: 1; tidak ada di sini jika Anda ingin membatasi area hitam */
     display: flex; /* Tambahkan flexbox ke container */
     flex-direction: column; /* Susun item di dalam container secara kolom */
     justify-content: center; /* Pusatkan secara vertikal jika ada ruang lebih */
     align-items: center; /* Pusatkan secara horizontal */
-    flex-shrink: 0; /* Tambahkan ini: Mencegah container menyusut secara tidak perlu */
+    flex-shrink: 0; /* Mencegah container menyusut */
     padding-top: 20px; /* Tambahkan sedikit padding atas dan bawah pada container */
     padding-bottom: 20px;
 }
