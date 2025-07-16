@@ -18,7 +18,7 @@ body {
     background-attachment: scroll; /* Agar latar belakang berfungsi lebih konsisten di mobile */
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    overflow-y: hidden; /* PERUBAHAN PENTING: Mencegah gulir vertikal */
+    overflow-y: auto; /* DIKEMBALIKAN KE 'auto': Lebih baik ada sedikit scroll daripada konten terpotong */
     overflow-x: hidden; /* Mencegah gulir horizontal */
     box-sizing: border-box;
 }
@@ -179,17 +179,20 @@ h1 {
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .container {
-        padding: 15px; /* Kurangi padding di ponsel */
+        padding: 10px; /* PERUBAHAN: Kurangi padding di ponsel lebih agresif */
     }
     h1 {
-        font-size: 1.3em; /* Kurangi ukuran font h1 lebih lanjut */
-        margin-bottom: 10px; /* Kurangi margin-bottom h1 */
+        font-size: 1.2em; /* PERUBAHAN: Kurangi ukuran font h1 lebih lanjut */
+        margin-bottom: 5px; /* PERUBAHAN: Kurangi margin-bottom h1 lebih agresif */
+    }
+    .calendar-image {
+        max-height: 45vh; /* PERUBAHAN: Batasi tinggi maksimum gambar agar muat */
+        object-fit: contain; /* Memastikan gambar diskalakan untuk muat tanpa terpotong */
     }
     .disclaimer {
-        margin-top: 10px; /* Kurangi margin-top disclaimer */
-        font-size: 0.8em; /* Mungkin kurangi ukuran font disclaimer */
+        margin-top: 5px; /* PERUBAHAN: Kurangi margin-top disclaimer lebih agresif */
+        font-size: 0.75em; /* PERUBAHAN: Mungkin kurangi ukuran font disclaimer */
     }
-    /* Blok .calendar-image yang kosong telah dihapus */
 }
 
 /* Discord Pop-up Styling */
