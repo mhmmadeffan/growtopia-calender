@@ -9,17 +9,17 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column; /* Mengubah arah flex menjadi kolom */
-    min-height: 100vh; /* PERBAIKAN: Pastikan body setidaknya setinggi viewport */
-    justify-content: flex-start; /* PERBAIKAN: Agar margin: auto pada .container berfungsi untuk pemusatan vertikal */
-    align-items: center; /* Memusatkan konten secara horizontal */
+    min-height: 100vh; /* Pastikan body setidaknya setinggi viewport */
+    justify-content: flex-start; /* Biarkan margin: auto pada .container yang mengatur pemusatan vertikal */
+    align-items: center; /* Ini memusatkan konten secara horizontal */
     background-image: url('img/growtopia_world_background.png');
     background-size: cover;
     background-position: center;
-    background-attachment: scroll; /* PERBAIKAN: Agar latar belakang berfungsi lebih konsisten di mobile */
+    background-attachment: scroll; /* Pastikan latar belakang berfungsi lebih konsisten di mobile */
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    overflow-y: hidden; /* PERBAIKAN: Mencegah gulir vertikal secara ketat */
-    overflow-x: hidden; /* PERBAIKAN: Mencegah gulir horizontal */
+    overflow-y: auto; /* PERUBAHAN: Kembali ke 'auto' agar popup tidak tersembunyi */
+    overflow-x: hidden; /* Mencegah gulir horizontal */
     box-sizing: border-box;
 }
 
@@ -34,7 +34,7 @@ body.modal-active {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; /* PERBAIKAN: Menggunakan vh untuk perbaikan di HP */
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 9;
     display: none;
@@ -50,7 +50,7 @@ body.modal-active {
 /* Konten utama yang akan diblur */
 .container {
     background-color: rgba(0, 0, 0, 0.7);
-    padding: 30px;
+    padding: 30px; /* Default padding untuk layar besar */
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     text-align: center;
@@ -58,13 +58,12 @@ body.modal-active {
     z-index: 1;
     position: relative;
     transition: filter 0.3s ease-in-out;
-    margin: auto; /* PERBAIKAN: Ini akan memusatkan .container secara vertikal & horizontal */
-    /* margin-bottom: 20px; Ini tidak diperlukan lagi dengan margin: auto */
-    flex-shrink: 0; /* PERBAIKAN: Mencegah container menyusut */
-    display: flex; /* Tambahkan flexbox ke container */
-    flex-direction: column; /* Susun item di dalam container secara kolom */
-    justify-content: center; /* Pusatkan secara vertikal jika ada ruang lebih */
-    align-items: center; /* Pusatkan secara horizontal */
+    margin: auto; /* Ini akan memusatkan .container secara vertikal & horizontal */
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Ketika body memiliki kelas modal-active, blur container */
@@ -106,7 +105,7 @@ h1 {
     left: 0;
     top: 0;
     width: 100%;
-    height: 100vh; /* PERBAIKAN: Menggunakan vh untuk perbaikan di HP */
+    height: 100vh;
     overflow: auto;
     box-sizing: border-box;
 
@@ -160,12 +159,12 @@ h1 {
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    color: #aaa; /* Warna teks footer */
+    color: #aaa;
     font-size: 0.8em;
-    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
-    z-index: 1; /* Pastikan di atas background tapi di bawah modal/overlay */
-    margin-top: auto; /* Mendorong footer ke bagian bawah */
-    flex-shrink: 0; /* PERBAIKAN: Mencegah footer menyusut */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    margin-top: auto;
+    flex-shrink: 0;
 }
 
 
@@ -180,21 +179,108 @@ h1 {
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .container {
-        padding: 10px; /* PERUBAIKAN: Padding yang lebih kecil untuk ponsel */
+        padding: 10px;
     }
     h1 {
-        font-size: 1.3em; /* PERBAIKAN: Ukuran font H1 yang dioptimalkan */
-        margin-bottom: 5px; /* PERBAIKAN: Margin bawah H1 yang lebih kecil */
+        font-size: 1.3em;
+        margin-bottom: 5px;
     }
     .calendar-image {
-        max-height: 40vh; /* PERBAIKAN: Batasi tinggi gambar untuk memastikan footer terlihat */
-        object-fit: contain; /* Memastikan gambar diskalakan dengan benar */
+        max-height: 40vh;
+        object-fit: contain;
     }
     .disclaimer {
-        margin-top: 5px; /* PERBAIKAN: Margin atas disclaimer yang lebih kecil */
-        font-size: 0.8em; /* PERBAIKAN: Ukuran font disclaimer yang dioptimalkan */
+        margin-top: 5px;
+        font-size: 0.8em;
     }
     .site-footer {
-        padding: 5px 0; /* PERBAIKAN: Mengurangi padding footer di ponsel */
+        padding: 5px 0;
     }
+}
+/* Discord Pop-up Styling */
+.discord-popup {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(30, 30, 40, 0.95);
+    border: 2px solid #5865F2;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    text-align: center;
+    max-width: 350px;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+.discord-popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.discord-button {
+    background-color: #5865F2;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    justify-content: center;
+}
+
+.discord-button:hover {
+    background-color: #4752C4;
+}
+
+.discord-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+.popup-countdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: #bbb;
+    font-size: 0.9em;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.close-popup-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.9em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.close-popup-button:hover {
+    background-color: #45a049;
+}
+
+/* Optional: Add a subtle blur to the background when popup is active */
+body.discord-popup-active .container,
+body.discord-popup-active .site-footer {
+    filter: blur(3px);
 }
