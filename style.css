@@ -11,7 +11,7 @@ body {
     flex-direction: column; /* Mengubah arah flex menjadi kolom */
     justify-content: space-between; /* Untuk menempatkan footer di bawah */
     align-items: center;
-    background-image: url('img/growtopia_world_background.png'); /* Ganti dengan gambar latar belakang Growtopia Anda */
+    background-image: url('https://static.wikia.nocookie.net/growtopia/images/e/e5/Weather_Machine_-_Realm_of_Spirits.png/revision/latest/scale-to-width-down/1000?cb=20230818090204'); /* Ganti dengan gambar latar belakang Growtopia Anda */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
