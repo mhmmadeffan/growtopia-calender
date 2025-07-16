@@ -12,7 +12,7 @@ body {
     min-height: 100vh; /* Gunakan min-height untuk memastikan body setidaknya setinggi viewport */
     justify-content: space-between; /* Untuk menempatkan footer di bawah */
     align-items: center;
-    background-image: url('img/image_12616.png'); /* Ganti dengan gambar latar belakang Growtopia Anda */
+    background-image: url('img/growtopia_world_background.png'); /* Ganti dengan gambar latar belakang Growtopia Anda */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
