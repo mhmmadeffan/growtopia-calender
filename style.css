@@ -8,9 +8,9 @@ html, body {
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    justify-content: center; /* Ini memusatkan konten secara vertikal */
+    flex-direction: column; /* Mengubah arah flex menjadi kolom */
+    min-height: 100vh; /* Pastikan body setidaknya setinggi viewport */
+    justify-content: flex-start; /* UBAH INI: Biarkan margin: auto pada .container yang mengatur pemusatan vertikal */
     align-items: center; /* Ini memusatkan konten secara horizontal */
     background-image: url('img/growtopia_world_background.png');
     background-size: cover;
@@ -57,14 +57,14 @@ body.modal-active {
     z-index: 1;
     position: relative;
     transition: filter 0.3s ease-in-out;
-    /* margin-bottom: 20px; Ini dihapus agar tidak mengganggu pemusatan */
+    /* margin-bottom: 20px; Ini tidak diperlukan lagi karena margin: auto */
+    margin: auto; /* PERUBAHAN UTAMA: Ini akan memusatkan .container secara vertikal & horizontal */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    /* padding-top: 20px; padding-bottom: 20px; // Anda bisa sesuaikan padding internal jika diperlukan */
 }
 
 /* Ketika body memiliki kelas modal-active, blur container */
