@@ -1,28 +1,25 @@
 html, body {
     margin: 0;
     padding: 0;
-    /* height: 100%;  Bisa dihapus atau diubah ke 100vh jika ada masalah */
+    height: 100%; /* Tetap 100% untuk kompatibilitas, akan diatasi oleh min-height pada body */
     width: 100%;
 }
 
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Mengubah arah flex menjadi kolom */
     min-height: 100vh; /* Pastikan body setidaknya setinggi viewport */
-    justify-content: flex-start; /* Ubah ini untuk memastikan konten dimulai dari atas */
+    justify-content: flex-start; /* UBAH INI: Pastikan konten dimulai dari atas, bukan menyebar */
     align-items: center;
-    background-image: url('img/growtopia_world_background.png');
+    background-image: url('img/growtopia_world_background.png'); /* Ganti dengan gambar latar belakang Growtopia Anda */
     background-size: cover;
     background-position: center;
-    /* background-attachment: fixed; */ /* Coba nonaktifkan ini untuk mobile compatibility */
+    background-attachment: fixed;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    overflow-y: auto; /* Izinkan scroll vertikal jika konten melebihi tinggi viewport */
-    overflow-x: hidden; /* Sembunyikan scroll horizontal */
+    overflow: auto; /* Izinkan scroll jika konten melebihi tinggi viewport */
     box-sizing: border-box;
-    padding-top: 20px; /* Tambahkan padding atas untuk sedikit jarak */
-    padding-bottom: 20px; /* Tambahkan padding bawah untuk sedikit jarak dari footer */
 }
 
 /* Ketika modal aktif, sembunyikan overflow dan blur container */
@@ -36,7 +33,7 @@ body.modal-active {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100vh; /* Mengubah dari 100% menjadi 100vh untuk perbaikan di HP */
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 9;
     display: none;
@@ -60,14 +57,15 @@ body.modal-active {
     z-index: 1;
     position: relative;
     transition: filter 0.3s ease-in-out;
-    /* margin-bottom: 20px; Ini akan diganti oleh padding-bottom pada body */
-    /* flex-grow: 1; Ini bisa menyebabkan container terlalu besar di mobile jika tidak ada cukup konten */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0; /* Mencegah container menyusut jika ada ruang terbatas */
-    width: auto; /* Biarkan lebar menyesuaikan konten atau max-width */
+    margin-bottom: 20px; /* Jarak dari footer */
+    /* HAPUS/KOMENTARI flex-grow: 1; */ /* INI PENTING: Mencegah container mengambil semua sisa ruang */
+    display: flex; /* Tambahkan flexbox ke container */
+    flex-direction: column; /* Susun item di dalam container secara kolom */
+    justify-content: center; /* Pusatkan secara vertikal jika ada ruang lebih */
+    align-items: center; /* Pusatkan secara horizontal */
+    flex-shrink: 0; /* Tambahkan ini: Mencegah container menyusut secara tidak perlu */
+    padding-top: 20px; /* Tambahkan sedikit padding atas dan bawah pada container */
+    padding-bottom: 20px;
 }
 
 /* Ketika body memiliki kelas modal-active, blur container */
@@ -109,9 +107,10 @@ h1 {
     left: 0;
     top: 0;
     width: 100%;
-    height: 100vh;
+    height: 100vh; /* Mengubah dari 100% menjadi 100vh untuk perbaikan di HP */
     overflow: auto;
     box-sizing: border-box;
+
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -162,12 +161,12 @@ h1 {
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    color: #aaa;
+    color: #aaa; /* Warna teks footer */
     font-size: 0.8em;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-    margin-top: auto;
-    flex-shrink: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
+    z-index: 1; /* Pastikan di atas background tapi di bawah modal/overlay */
+    margin-top: auto; /* Mendorong footer ke bagian bawah */
+    flex-shrink: 0; /* Mencegah footer menyusut */
 }
 
 
@@ -183,29 +182,22 @@ h1 {
 @media (max-width: 768px) {
     .container {
         padding: 20px;
-        /* Tambahkan margin-top/bottom jika diperlukan untuk jarak ekstra */
     }
     h1 {
         font-size: 1.5em;
-    }
-    /* Sesuaikan ukuran gambar latar belakang agar lebih responsif di sini jika perlu */
-    body {
-        background-size: contain; /* Coba "contain" di mobile untuk melihat perbedaannya */
-        background-repeat: no-repeat; /* Pastikan tidak ada pengulangan */
-        background-position: center top; /* Posisikan ke atas tengah */
     }
 }
 
 /* Discord Pop-up Styling */
 .discord-popup {
-    display: none;
+    display: none; /* Hidden by default */
     position: fixed;
-    z-index: 100;
+    z-index: 100; /* Higher than other modals/overlays */
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(30, 30, 40, 0.95);
-    border: 2px solid #5865F2;
+    border: 2px solid #5865F2; /* Discord blue border */
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
     padding: 20px;
@@ -223,7 +215,7 @@ h1 {
 }
 
 .discord-button {
-    background-color: #5865F2;
+    background-color: #5865F2; /* Discord blue */
     color: #fff;
     padding: 12px 25px;
     border-radius: 8px;
@@ -246,6 +238,7 @@ h1 {
     width: 24px;
     height: 24px;
     vertical-align: middle;
+    /* Anda perlu menyediakan actual discord-icon.png di folder img Anda atau menggunakan SVG/Font Awesome */
 }
 
 .popup-countdown {
@@ -261,7 +254,7 @@ h1 {
 }
 
 .close-popup-button {
-    background-color: #4CAF50;
+    background-color: #4CAF50; /* Green */
     color: white;
     border: none;
     padding: 8px 15px;
