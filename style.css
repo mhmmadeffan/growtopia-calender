@@ -18,8 +18,8 @@ body {
     background-attachment: scroll; /* Agar latar belakang berfungsi lebih konsisten di mobile */
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    overflow-y: auto; /* Izinkan scroll vertikal jika konten melebihi tinggi viewport (akan kita coba minimalisir) */
-    overflow-x: hidden; /* Tambahkan/pastikan ini untuk mencegah scroll horizontal yang tidak diinginkan */
+    overflow-y: hidden; /* PERUBAHAN PENTING: Mencegah gulir vertikal */
+    overflow-x: hidden; /* Mencegah gulir horizontal */
     box-sizing: border-box;
 }
 
@@ -189,7 +189,7 @@ h1 {
         margin-top: 10px; /* Kurangi margin-top disclaimer */
         font-size: 0.8em; /* Mungkin kurangi ukuran font disclaimer */
     }
-    /* Blok .calendar-image yang kosong telah dihapus di sini */
+    /* Blok .calendar-image yang kosong telah dihapus */
 }
 
 /* Discord Pop-up Styling */
