@@ -8,10 +8,10 @@ html, body {
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    flex-direction: column; /* Mengubah arah flex menjadi kolom */
-    justify-content: space-between; /* Untuk menempatkan footer di bawah */
+    flex-direction: column;
+    justify-content: space-between; 
     align-items: center;
-    background-image: url('img/growtopia_world_background.png'); /* Ganti dengan gambar latar belakang Growtopia Anda */
+    background-image: url('img/growtopia_world_background.png'); 
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -21,12 +21,12 @@ body {
     box-sizing: border-box;
 }
 
-/* Ketika modal aktif, sembunyikan overflow dan blur container */
+
 body.modal-active {
     overflow: hidden;
 }
 
-/* Overlay yang akan memudar dan blur konten di belakang modal */
+
 .overlay {
     position: fixed;
     top: 0;
@@ -45,7 +45,7 @@ body.modal-active {
     opacity: 1;
 }
 
-/* Konten utama yang akan diblur */
+
 .container {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 30px;
@@ -56,11 +56,11 @@ body.modal-active {
     z-index: 1;
     position: relative;
     transition: filter 0.3s ease-in-out;
-    margin-top: auto; /* Mendorong container ke atas */
-    margin-bottom: 20px; /* Jarak dari footer */
+    margin-top: auto; 
+    margin-bottom: 20px; 
 }
 
-/* Ketika body memiliki kelas modal-active, blur container */
+
 body.modal-active .container {
     filter: blur(5px);
 }
@@ -91,7 +91,7 @@ h1 {
     color: #ccc;
 }
 
-/* The Modal (Background) */
+
 .modal {
     display: none;
     position: fixed;
@@ -108,7 +108,7 @@ h1 {
     padding: 20px;
 }
 
-/* Modal Content (Image) */
+
 .modal-content {
     display: block;
     max-width: 90%;
@@ -122,13 +122,13 @@ h1 {
     filter: none;
 }
 
-/* Add Animation */
+
 @keyframes zoom {
     from {transform: scale(0.1)}
     to {transform: scale(1)}
 }
 
-/* The Close Button */
+
 .close {
     position: absolute;
     top: 15px;
@@ -148,20 +148,20 @@ h1 {
     cursor: pointer;
 }
 
-/* FOOTER STYLING */
+
 .site-footer {
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    color: #aaa; /* Warna teks footer */
+    color: #aaa; 
     font-size: 0.8em;
-    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
-    z-index: 1; /* Pastikan di atas background tapi di bawah modal/overlay */
-    margin-top: auto; /* Mendorong footer ke bagian bawah */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1; 
+    margin-top: auto; 
 }
 
 
-/* 100% Image Width on Smaller Screens */
+
 @media only screen and (max-width: 700px){
     .modal-content {
         max-width: 95%;
@@ -169,7 +169,7 @@ h1 {
     }
 }
 
-/* Responsive design for smaller screens */
+
 @media (max-width: 768px) {
     .container {
         padding: 20px;
@@ -178,18 +178,18 @@ h1 {
         font-size: 1.5em;
     }
 }
-/* ... (Gaya CSS yang sudah ada) ... */
 
-/* Discord Pop-up Styling */
+
+
 .discord-popup {
-    display: none; /* Hidden by default */
+    display: none; 
     position: fixed;
-    z-index: 100; /* Higher than other modals/overlays */
+    z-index: 100; 
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(30, 30, 40, 0.95);
-    border: 2px solid #5865F2; /* Discord blue border */
+    border: 3px solid #5865F2; 
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
     padding: 20px;
@@ -207,7 +207,7 @@ h1 {
 }
 
 .discord-button {
-    background-color: #5865F2; /* Discord blue */
+    background-color: #5865F2; 
     color: #fff;
     padding: 12px 25px;
     border-radius: 8px;
@@ -230,7 +230,7 @@ h1 {
     width: 24px;
     height: 24px;
     vertical-align: middle;
-    /* You'll need to provide an actual discord-icon.png in your img folder or use an SVG/Font Awesome */
+    
 }
 
 .popup-countdown {
@@ -246,7 +246,7 @@ h1 {
 }
 
 .close-popup-button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50; 
     color: white;
     border: none;
     padding: 8px 15px;
@@ -263,7 +263,7 @@ h1 {
     background-color: #45a049;
 }
 
-/* Optional: Add a subtle blur to the background when popup is active */
+
 body.discord-popup-active .container,
 body.discord-popup-active .site-footer {
     filter: blur(3px);
