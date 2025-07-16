@@ -1,7 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%; /* Pastikan html dan body mengambil tinggi penuh */
+    height: 100%;
     width: 100%;
 }
 
@@ -9,17 +9,15 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column; /* Mengubah arah flex menjadi kolom */
-    min-height: 100vh; /* Pastikan body setidaknya setinggi viewport */
-    justify-content: flex-start; /* Biarkan margin: auto pada .container yang mengatur pemusatan vertikal */
-    align-items: center; /* Ini memusatkan konten secara horizontal */
-    background-image: url('img/growtopia_world_background.png');
+    justify-content: space-between; /* Untuk menempatkan footer di bawah */
+    align-items: center;
+    background-image: url('img/growtopia_world_background.png'); /* Ganti dengan gambar latar belakang Growtopia Anda */
     background-size: cover;
     background-position: center;
-    background-attachment: scroll; /* Pastikan latar belakang berfungsi lebih konsisten di mobile */
+    background-attachment: fixed;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    overflow-y: hidden; /* Mencegah gulir vertikal secara ketat */
-    overflow-x: hidden; /* Mencegah gulir horizontal */
+    overflow: auto;
     box-sizing: border-box;
 }
 
@@ -34,7 +32,7 @@ body.modal-active {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 9;
     display: none;
@@ -50,7 +48,7 @@ body.modal-active {
 /* Konten utama yang akan diblur */
 .container {
     background-color: rgba(0, 0, 0, 0.7);
-    padding: 30px; /* Default padding untuk layar besar */
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     text-align: center;
@@ -58,12 +56,8 @@ body.modal-active {
     z-index: 1;
     position: relative;
     transition: filter 0.3s ease-in-out;
-    margin: auto; /* Ini akan memusatkan .container secara vertikal & horizontal */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
+    margin-top: auto; /* Mendorong container ke atas */
+    margin-bottom: 20px; /* Jarak dari footer */
 }
 
 /* Ketika body memiliki kelas modal-active, blur container */
@@ -73,7 +67,7 @@ body.modal-active .container {
 
 h1 {
     color: #ffd700;
-    margin-bottom: 20px; /* Default margin-bottom */
+    margin-bottom: 20px;
 }
 
 .calendar-image {
@@ -92,7 +86,7 @@ h1 {
 }
 
 .disclaimer {
-    margin-top: 20px; /* Default margin-top */
+    margin-top: 20px;
     font-size: 0.9em;
     color: #ccc;
 }
@@ -105,7 +99,7 @@ h1 {
     left: 0;
     top: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     overflow: auto;
     box-sizing: border-box;
 
@@ -158,13 +152,12 @@ h1 {
 .site-footer {
     width: 100%;
     text-align: center;
-    padding: 10px 0; /* Default padding */
-    color: #aaa;
+    padding: 10px 0;
+    color: #aaa; /* Warna teks footer */
     font-size: 0.8em;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
+    z-index: 1; /* Pastikan di atas background tapi di bawah modal/overlay */
     margin-top: auto; /* Mendorong footer ke bagian bawah */
-    flex-shrink: 0;
 }
 
 
@@ -179,108 +172,9 @@ h1 {
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .container {
-        padding: 10px; /* PERUBAHAN: Mengurangi padding kontainer lebih lanjut */
+        padding: 20px;
     }
     h1 {
-        font-size: 1.3em; /* PERUBAHAN: Ukuran font H1 yang lebih optimal */
-        margin-bottom: 5px; /* PERUBAHAN: Margin bawah H1 yang lebih kecil */
+        font-size: 1.5em;
     }
-    .calendar-image {
-        max-height: 40vh; /* PERUBAHAN PENTING: Batasi tinggi maksimum gambar agar semua muat */
-        object-fit: contain; /* Memastikan gambar diskalakan untuk muat tanpa terpotong */
-    }
-    .disclaimer {
-        margin-top: 5px; /* PERUBAHAN: Margin atas disclaimer yang lebih kecil */
-        font-size: 0.8em; /* PERUBAHAN: Ukuran font disclaimer yang lebih optimal */
-    }
-    .site-footer {
-        padding: 5px 0; /* PERUBAHAN: Mengurangi padding footer di ponsel */
-    }
-}
-/* Discord Pop-up Styling */
-.discord-popup {
-    display: none;
-    position: fixed;
-    z-index: 100;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(30, 30, 40, 0.95);
-    border: 2px solid #5865F2;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    text-align: center;
-    max-width: 350px;
-    width: 90%;
-    box-sizing: border-box;
-}
-
-.discord-popup-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-.discord-button {
-    background-color: #5865F2;
-    color: #fff;
-    padding: 12px 25px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 1.1em;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    justify-content: center;
-}
-
-.discord-button:hover {
-    background-color: #4752C4;
-}
-
-.discord-icon {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
-}
-
-.popup-countdown {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    color: #bbb;
-    font-size: 0.9em;
-    background-color: rgba(0, 0, 0, 0.4);
-    padding: 8px 15px;
-    border-radius: 5px;
-}
-
-.close-popup-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 0.9em;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.close-popup-button:hover {
-    background-color: #45a049;
-}
-
-/* Optional: Add a subtle blur to the background when popup is active */
-body.discord-popup-active .container,
-body.discord-popup-active .site-footer {
-    filter: blur(3px);
 }
