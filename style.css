@@ -1,24 +1,24 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%; /* Tetap 100% untuk kompatibilitas, akan diatasi oleh min-height pada body */
+    height: 100%;
     width: 100%;
 }
 
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    flex-direction: column; /* Mengubah arah flex menjadi kolom */
-    min-height: 100vh; /* Pastikan body setidaknya setinggi viewport */
-    justify-content: center; /* UBAH INI: Pusatkan konten secara vertikal */
-    align-items: center;
-    background-image: url('img/growtopia_world_background.png'); /* Ganti dengan gambar latar belakang Growtopia Anda */
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center; /* Ini memusatkan konten secara vertikal */
+    align-items: center; /* Ini memusatkan konten secara horizontal */
+    background-image: url('img/growtopia_world_background.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    overflow: auto; /* Izinkan scroll jika konten melebihi tinggi viewport */
+    overflow: auto;
     box-sizing: border-box;
 }
 
@@ -33,7 +33,7 @@ body.modal-active {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; /* Mengubah dari 100% menjadi 100vh untuk perbaikan di HP */
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 9;
     display: none;
@@ -57,14 +57,13 @@ body.modal-active {
     z-index: 1;
     position: relative;
     transition: filter 0.3s ease-in-out;
-    margin-bottom: 20px; /* Jarak dari footer */
-    /* Pastikan flex-grow: 1; tidak ada di sini jika Anda ingin membatasi area hitam */
-    display: flex; /* Tambahkan flexbox ke container */
-    flex-direction: column; /* Susun item di dalam container secara kolom */
-    justify-content: center; /* Pusatkan secara vertikal jika ada ruang lebih */
-    align-items: center; /* Pusatkan secara horizontal */
-    flex-shrink: 0; /* Mencegah container menyusut */
-    padding-top: 20px; /* Tambahkan sedikit padding atas dan bawah pada container */
+    /* margin-bottom: 20px; Ini dihapus agar tidak mengganggu pemusatan */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    padding-top: 20px;
     padding-bottom: 20px;
 }
 
@@ -107,7 +106,7 @@ h1 {
     left: 0;
     top: 0;
     width: 100%;
-    height: 100vh; /* Mengubah dari 100% menjadi 100vh untuk perbaikan di HP */
+    height: 100vh;
     overflow: auto;
     box-sizing: border-box;
 
@@ -161,12 +160,12 @@ h1 {
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    color: #aaa; /* Warna teks footer */
+    color: #aaa;
     font-size: 0.8em;
-    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
-    z-index: 1; /* Pastikan di atas background tapi di bawah modal/overlay */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
     margin-top: auto; /* Mendorong footer ke bagian bawah */
-    flex-shrink: 0; /* Mencegah footer menyusut */
+    flex-shrink: 0;
 }
 
 
@@ -190,14 +189,14 @@ h1 {
 
 /* Discord Pop-up Styling */
 .discord-popup {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
-    z-index: 100; /* Higher than other modals/overlays */
+    z-index: 100;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(30, 30, 40, 0.95);
-    border: 2px solid #5865F2; /* Discord blue border */
+    border: 2px solid #5865F2;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
     padding: 20px;
@@ -215,7 +214,7 @@ h1 {
 }
 
 .discord-button {
-    background-color: #5865F2; /* Discord blue */
+    background-color: #5865F2;
     color: #fff;
     padding: 12px 25px;
     border-radius: 8px;
@@ -238,7 +237,6 @@ h1 {
     width: 24px;
     height: 24px;
     vertical-align: middle;
-    /* Anda perlu menyediakan actual discord-icon.png di folder img Anda atau menggunakan SVG/Font Awesome */
 }
 
 .popup-countdown {
@@ -254,7 +252,7 @@ h1 {
 }
 
 .close-popup-button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
     color: white;
     border: none;
     padding: 8px 15px;
