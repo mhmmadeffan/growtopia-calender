@@ -9,15 +9,17 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column; /* Mengubah arah flex menjadi kolom */
-    justify-content: space-between; /* Untuk menempatkan footer di bawah */
-    align-items: center;
-    background-image: url('img/growtopia_world_background.png'); /* Ganti dengan gambar latar belakang Growtopia Anda */
+    min-height: 100vh; /* PERBAIKAN: Pastikan body setidaknya setinggi viewport */
+    justify-content: flex-start; /* PERBAIKAN: Agar margin: auto pada .container berfungsi untuk pemusatan vertikal */
+    align-items: center; /* Memusatkan konten secara horizontal */
+    background-image: url('img/growtopia_world_background.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll; /* PERBAIKAN: Agar latar belakang berfungsi lebih konsisten di mobile */
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    overflow: auto;
+    overflow-y: hidden; /* PERBAIKAN: Mencegah gulir vertikal secara ketat */
+    overflow-x: hidden; /* PERBAIKAN: Mencegah gulir horizontal */
     box-sizing: border-box;
 }
 
@@ -32,7 +34,7 @@ body.modal-active {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh; /* PERBAIKAN: Menggunakan vh untuk perbaikan di HP */
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 9;
     display: none;
@@ -56,8 +58,13 @@ body.modal-active {
     z-index: 1;
     position: relative;
     transition: filter 0.3s ease-in-out;
-    margin-top: auto; /* Mendorong container ke atas */
-    margin-bottom: 20px; /* Jarak dari footer */
+    margin: auto; /* PERBAIKAN: Ini akan memusatkan .container secara vertikal & horizontal */
+    /* margin-bottom: 20px; Ini tidak diperlukan lagi dengan margin: auto */
+    flex-shrink: 0; /* PERBAIKAN: Mencegah container menyusut */
+    display: flex; /* Tambahkan flexbox ke container */
+    flex-direction: column; /* Susun item di dalam container secara kolom */
+    justify-content: center; /* Pusatkan secara vertikal jika ada ruang lebih */
+    align-items: center; /* Pusatkan secara horizontal */
 }
 
 /* Ketika body memiliki kelas modal-active, blur container */
@@ -99,7 +106,7 @@ h1 {
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh; /* PERBAIKAN: Menggunakan vh untuk perbaikan di HP */
     overflow: auto;
     box-sizing: border-box;
 
@@ -158,6 +165,7 @@ h1 {
     background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
     z-index: 1; /* Pastikan di atas background tapi di bawah modal/overlay */
     margin-top: auto; /* Mendorong footer ke bagian bawah */
+    flex-shrink: 0; /* PERBAIKAN: Mencegah footer menyusut */
 }
 
 
@@ -172,9 +180,21 @@ h1 {
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .container {
-        padding: 20px;
+        padding: 10px; /* PERUBAIKAN: Padding yang lebih kecil untuk ponsel */
     }
     h1 {
-        font-size: 1.5em;
+        font-size: 1.3em; /* PERBAIKAN: Ukuran font H1 yang dioptimalkan */
+        margin-bottom: 5px; /* PERBAIKAN: Margin bawah H1 yang lebih kecil */
+    }
+    .calendar-image {
+        max-height: 40vh; /* PERBAIKAN: Batasi tinggi gambar untuk memastikan footer terlihat */
+        object-fit: contain; /* Memastikan gambar diskalakan dengan benar */
+    }
+    .disclaimer {
+        margin-top: 5px; /* PERBAIKAN: Margin atas disclaimer yang lebih kecil */
+        font-size: 0.8em; /* PERBAIKAN: Ukuran font disclaimer yang dioptimalkan */
+    }
+    .site-footer {
+        padding: 5px 0; /* PERBAIKAN: Mengurangi padding footer di ponsel */
     }
 }
