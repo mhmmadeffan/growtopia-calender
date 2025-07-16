@@ -1,23 +1,24 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    width: 100%;
+    height: 100%; /* Pastikan 100% tinggi */
+    width: 100%; /* Pastikan 100% lebar */
 }
 
 body {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column; /* Mengubah arah flex menjadi kolom */
+    min-height: 100vh; /* Gunakan min-height untuk memastikan body setidaknya setinggi viewport */
     justify-content: space-between; /* Untuk menempatkan footer di bawah */
     align-items: center;
-    background-image: url('img/growtopia_world_background.png'); /* Ganti dengan gambar latar belakang Growtopia Anda */
+    background-image: url('img/image_12616.png'); /* Ganti dengan gambar latar belakang Growtopia Anda */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    overflow: auto;
+    overflow: auto; /* Izinkan scroll jika konten melebihi tinggi viewport */
     box-sizing: border-box;
 }
 
@@ -56,8 +57,13 @@ body.modal-active {
     z-index: 1;
     position: relative;
     transition: filter 0.3s ease-in-out;
-    margin-top: auto; /* Mendorong container ke atas */
+    /* margin-top: auto; -- Ini sudah ada, tapi pastikan konsisten */
     margin-bottom: 20px; /* Jarak dari footer */
+    flex-grow: 1; /* Biarkan container mengambil sisa ruang yang tersedia */
+    display: flex; /* Tambahkan flexbox ke container */
+    flex-direction: column; /* Susun item di dalam container secara kolom */
+    justify-content: center; /* Pusatkan secara vertikal jika ada ruang lebih */
+    align-items: center; /* Pusatkan secara horizontal */
 }
 
 /* Ketika body memiliki kelas modal-active, blur container */
@@ -158,6 +164,8 @@ h1 {
     background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
     z-index: 1; /* Pastikan di atas background tapi di bawah modal/overlay */
     margin-top: auto; /* Mendorong footer ke bagian bawah */
+    /* Pastikan footer tidak mengganggu flexbox utama */
+    flex-shrink: 0; /* Mencegah footer menyusut */
 }
 
 
@@ -177,4 +185,93 @@ h1 {
     h1 {
         font-size: 1.5em;
     }
+}
+
+/* Discord Pop-up Styling */
+.discord-popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 100; /* Higher than other modals/overlays */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(30, 30, 40, 0.95);
+    border: 4px solid #5865F2; /* Discord blue border */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    text-align: center;
+    max-width: 350px;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+.discord-popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.discord-button {
+    background-color: #5865F2; /* Discord blue */
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    justify-content: center;
+}
+
+.discord-button:hover {
+    background-color: #4752C4;
+}
+
+.discord-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    /* Anda perlu menyediakan actual discord-icon.png di folder img Anda atau menggunakan SVG/Font Awesome */
+}
+
+.popup-countdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: #bbb;
+    font-size: 0.9em;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.close-popup-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.9em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.close-popup-button:hover {
+    background-color: #45a049;
+}
+
+/* Optional: Add a subtle blur to the background when popup is active */
+body.discord-popup-active .container,
+body.discord-popup-active .site-footer {
+    filter: blur(3px);
 }
