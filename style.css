@@ -15,10 +15,10 @@ body {
     background-image: url('img/growtopia_world_background.png');
     background-size: cover;
     background-position: center;
-    background-attachment: scroll; /* UBAH INI: Agar latar belakang berfungsi lebih konsisten di mobile */
+    background-attachment: scroll; /* Agar latar belakang berfungsi lebih konsisten di mobile */
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    overflow-y: auto; /* Izinkan scroll vertikal jika konten melebihi tinggi viewport */
+    overflow-y: auto; /* Izinkan scroll vertikal jika konten melebihi tinggi viewport (akan kita coba minimalisir) */
     overflow-x: hidden; /* Tambahkan/pastikan ini untuk mencegah scroll horizontal yang tidak diinginkan */
     box-sizing: border-box;
 }
@@ -50,7 +50,7 @@ body.modal-active {
 /* Konten utama yang akan diblur */
 .container {
     background-color: rgba(0, 0, 0, 0.7);
-    padding: 30px;
+    padding: 30px; /* Default padding untuk layar besar */
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     text-align: center;
@@ -64,9 +64,6 @@ body.modal-active {
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    /* Anda bisa sesuaikan padding internal jika diperlukan, contoh: */
-    /* padding-top: 20px; */
-    /* padding-bottom: 20px; */
 }
 
 /* Ketika body memiliki kelas modal-active, blur container */
@@ -76,7 +73,7 @@ body.modal-active .container {
 
 h1 {
     color: #ffd700;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Default margin-bottom */
 }
 
 .calendar-image {
@@ -95,7 +92,7 @@ h1 {
 }
 
 .disclaimer {
-    margin-top: 20px;
+    margin-top: 20px; /* Default margin-top */
     font-size: 0.9em;
     color: #ccc;
 }
@@ -182,11 +179,17 @@ h1 {
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .container {
-        padding: 20px;
+        padding: 15px; /* Kurangi padding di ponsel */
     }
     h1 {
-        font-size: 1.5em;
+        font-size: 1.3em; /* Kurangi ukuran font h1 lebih lanjut */
+        margin-bottom: 10px; /* Kurangi margin-bottom h1 */
     }
+    .disclaimer {
+        margin-top: 10px; /* Kurangi margin-top disclaimer */
+        font-size: 0.8em; /* Mungkin kurangi ukuran font disclaimer */
+    }
+    /* Blok .calendar-image yang kosong telah dihapus di sini */
 }
 
 /* Discord Pop-up Styling */
