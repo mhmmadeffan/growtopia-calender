@@ -18,7 +18,7 @@ body {
     background-attachment: scroll; /* Pastikan latar belakang berfungsi lebih konsisten di mobile */
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    overflow-y: hidden; /* PERUBAHAN PENTING: Mencegah gulir vertikal */
+    overflow-y: hidden; /* Mencegah gulir vertikal secara ketat */
     overflow-x: hidden; /* Mencegah gulir horizontal */
     box-sizing: border-box;
 }
@@ -158,7 +158,7 @@ h1 {
 .site-footer {
     width: 100%;
     text-align: center;
-    padding: 10px 0;
+    padding: 10px 0; /* Default padding */
     color: #aaa;
     font-size: 0.8em;
     background-color: rgba(0, 0, 0, 0.5);
@@ -179,23 +179,24 @@ h1 {
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .container {
-        padding: 20px; /* PERUBAHAN: Padding yang lebih seimbang untuk kerapian */
+        padding: 10px; /* PERUBAHAN: Mengurangi padding kontainer lebih lanjut */
     }
     h1 {
-        font-size: 1.4em; /* PERUBAHAN: Ukuran font H1 yang lebih optimal */
-        margin-bottom: 15px; /* PERUBAHAN: Margin bawah H1 yang lebih seimbang */
+        font-size: 1.3em; /* PERUBAHAN: Ukuran font H1 yang lebih optimal */
+        margin-bottom: 5px; /* PERUBAHAN: Margin bawah H1 yang lebih kecil */
     }
     .calendar-image {
-        /* PERUBAHAN: Menghapus max-height agar gambar dapat menyesuaikan secara alami */
-        max-height: none;
-        object-fit: initial;
+        max-height: 40vh; /* PERUBAHAN PENTING: Batasi tinggi maksimum gambar agar semua muat */
+        object-fit: contain; /* Memastikan gambar diskalakan untuk muat tanpa terpotong */
     }
     .disclaimer {
-        margin-top: 15px; /* PERUBAHAN: Margin atas disclaimer yang lebih seimbang */
-        font-size: 0.85em; /* PERUBAHAN: Ukuran font disclaimer yang lebih optimal */
+        margin-top: 5px; /* PERUBAHAN: Margin atas disclaimer yang lebih kecil */
+        font-size: 0.8em; /* PERUBAHAN: Ukuran font disclaimer yang lebih optimal */
+    }
+    .site-footer {
+        padding: 5px 0; /* PERUBAHAN: Mengurangi padding footer di ponsel */
     }
 }
-
 /* Discord Pop-up Styling */
 .discord-popup {
     display: none;
