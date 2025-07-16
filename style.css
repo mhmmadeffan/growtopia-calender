@@ -1,15 +1,14 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%; /* Pastikan 100% tinggi */
-    width: 100%; /* Pastikan 100% lebar */
+    height: 100%;
+    width: 100%;
 }
 
 body {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column; /* Mengubah arah flex menjadi kolom */
-    min-height: 100vh; /* Gunakan min-height untuk memastikan body setidaknya setinggi viewport */
     justify-content: space-between; /* Untuk menempatkan footer di bawah */
     align-items: center;
     background-image: url('img/growtopia_world_background.png'); /* Ganti dengan gambar latar belakang Growtopia Anda */
@@ -18,7 +17,7 @@ body {
     background-attachment: fixed;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    overflow: auto; /* Izinkan scroll jika konten melebihi tinggi viewport */
+    overflow: auto;
     box-sizing: border-box;
 }
 
@@ -32,8 +31,8 @@ body.modal-active {
     position: fixed;
     top: 0;
     left: 0;
-    width: 50%;
-    height: 50%;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 9;
     display: none;
@@ -57,13 +56,8 @@ body.modal-active {
     z-index: 1;
     position: relative;
     transition: filter 0.3s ease-in-out;
-    /* margin-top: auto; -- Ini sudah ada, tapi pastikan konsisten */
+    margin-top: auto; /* Mendorong container ke atas */
     margin-bottom: 20px; /* Jarak dari footer */
-    flex-grow: 1; /* Biarkan container mengambil sisa ruang yang tersedia */
-    display: flex; /* Tambahkan flexbox ke container */
-    flex-direction: column; /* Susun item di dalam container secara kolom */
-    justify-content: center; /* Pusatkan secara vertikal jika ada ruang lebih */
-    align-items: center; /* Pusatkan secara horizontal */
 }
 
 /* Ketika body memiliki kelas modal-active, blur container */
@@ -164,8 +158,6 @@ h1 {
     background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
     z-index: 1; /* Pastikan di atas background tapi di bawah modal/overlay */
     margin-top: auto; /* Mendorong footer ke bagian bawah */
-    /* Pastikan footer tidak mengganggu flexbox utama */
-    flex-shrink: 0; /* Mencegah footer menyusut */
 }
 
 
@@ -186,6 +178,7 @@ h1 {
         font-size: 1.5em;
     }
 }
+/* ... (Gaya CSS yang sudah ada) ... */
 
 /* Discord Pop-up Styling */
 .discord-popup {
@@ -237,7 +230,7 @@ h1 {
     width: 24px;
     height: 24px;
     vertical-align: middle;
-    /* Anda perlu menyediakan actual discord-icon.png di folder img Anda atau menggunakan SVG/Font Awesome */
+    /* You'll need to provide an actual discord-icon.png in your img folder or use an SVG/Font Awesome */
 }
 
 .popup-countdown {
